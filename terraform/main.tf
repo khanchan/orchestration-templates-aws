@@ -136,18 +136,6 @@ resource "aws_instance" "web01_np" {
   }
 
   provisioner "file" {
-      source = "id_rsa.daniel.pub"
-      destination = "/tmp/id_rsa.daniel.pub"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "cat /tmp/id_rsa.daniel.pub >> ~/.ssh/authorized_keys",
-      "sudo rm /tmp/id_rsa.daniel.pub"
-    ]
-  }
-
-  provisioner "file" {
       source = "terraform.sh"
       destination = "/tmp/terraform.sh"
   }
